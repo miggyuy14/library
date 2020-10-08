@@ -1,19 +1,18 @@
 <?php
 
 namespace App;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
-    protected $guarded =[];
+    protected $guarded = [];
 
     protected $dates = ['dob'];
 
-    public function setAuthorAttribute($author)
+    public function setDobAttribute($dob)
     {
-        $this->attribute['author_id'] = Author::firstOrCreate([
-            'name' => $author,
-        ]);
+        $this->attributes['dob'] = Carbon::parse($dob);
     }
 }
