@@ -10,5 +10,10 @@ class Author extends Model
 
     protected $dates = ['dob'];
 
-
+    public function setAuthorAttribute($author)
+    {
+        $this->attribute['author_id'] = Author::firstOrCreate([
+            'name' => $author,
+        ]);
+    }
 }
